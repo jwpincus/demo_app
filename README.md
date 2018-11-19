@@ -1,24 +1,14 @@
-# README
+# Assumptions
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+* Records should be retrieved from the API every time a user visits.
+* Records should only be stored if they are unique (uniqueness is validated on message, user_handle and created_at). The documentation says that id references the user, and not the message, so message uniqueness should not validate on id.
+* Errors happen
 
-Things you may want to cover:
 
-* Ruby version
+# Installation
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Dependencies: Rails, local instance of postgresql
+* run `bundle`. (Go get a coffee while you wait for nokogiri)
+* run `rake db:create`
+* run `rake db:migrate`
+* run `rspec` to run the full test suite
