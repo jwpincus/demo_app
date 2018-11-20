@@ -12,7 +12,7 @@
     <% @messages.each do |m| %>
       <tr class="message">
         <th><%= m.user_handle %></th>
-        <td><%= m.message %></td>
+        <td><%= link_to m.message, message_path(m) %></td>
         <td><%= m.sentiment %></td>
       </tr>
     <% end if @messages %>

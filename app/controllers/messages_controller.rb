@@ -13,4 +13,8 @@ class MessagesController < ApplicationController
     render :index
   end
 
+  def show
+    @message = Message.find(params[:id])
+  end
+
 end
