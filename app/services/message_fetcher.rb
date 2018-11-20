@@ -7,14 +7,13 @@ class MessageFetcher
     'followers': 'user_followers'
   }
 
-  def self.messages
-    fetch_messages
-    return Message.all
+  def self.messages!
+    return fetch_messages ? Message.all : false
   end
 
   def self.fetch_messages
     response = get('/tweets.json')
-    return if response.parsed_response.class == Hash && response['error'] # API will respond with 200 code on error, has to be checked manually and not against response code
+    return false if response.parsed_response.class == Hash && response['error'] # API will respond with 200 code on error, has to be checked manually and not against response code
     json = parse_json(response.parsed_response)
     bulk_create_messages(json)
   end
