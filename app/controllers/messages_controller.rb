@@ -9,7 +9,7 @@ class MessagesController < ApplicationController
   def coke
     fetch_success = MessageFetcher.messages!
     flash[:danger] = 'Something went wrong while getting new messages!' if !fetch_success
-    @messages = Message.coke_messages
+    @messages = Message.coke_messages.order(sentiment: :desc)
     render :index
   end
 
