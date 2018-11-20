@@ -7,4 +7,8 @@ class Message < ApplicationRecord
            :user_handle
   validates_uniqueness_of :message, scope: [:user_handle, :external_created_at]
 
+  def self.coke_messages
+    self.where("message ILIKE ANY(ARRAY['%coke%', '%coca-cola%', '%diet-cola%'])")
+  end
+
 end
