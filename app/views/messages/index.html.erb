@@ -1,0 +1,20 @@
+<h1>All Messages</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Handle</th>
+      <th>Message</th>
+      <th>Sentiment</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @messages.each do |m| %>
+      <tr class="message">
+        <th><%= m.user_handle %></th>
+        <td><%= m.message %></td>
+        <td><%= m.sentiment %></td>
+      </tr>
+    <% end if @messages %>
+  </tbody>
+</table>
